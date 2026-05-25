@@ -1,13 +1,14 @@
-require('dotenv').config();
-const express = require('express');
-const cors = require('cors');
-const postsRouter = require('./routes/posts');
+import * as dotenv from 'dotenv';
+import express from 'express';
+import cors from 'cors';
+import postsRouter from './routes/posts';
+
+dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 2000;
 
 app.use(cors());
-app.use(express.static('public'));
 app.use('/posts', postsRouter);
 
 app.listen(port, () => {
